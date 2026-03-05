@@ -1,73 +1,67 @@
-B-DIRO: Robô Didático com Dispositivos Lógicos Programáveis e VHDL
-O projeto B-DIRO (Bertoloti Didatic Robot) consiste no desenvolvimento de um robô com propósitos didáticos para fomentar o aprendizado prático de Dispositivos Lógicos Programáveis (DLPs/PLDs). O sistema permite que estudantes coloquem em prática conceitos de eletrônica digital e linguagens de descrição de hardware (HDL) em um ambiente físico, saindo apenas da simulação.
+# B-DIRO: Bertoloti Didatic Robot
 
-🎯 Objetivo
-Oferecer uma solução de baixo custo e montagem simplificada que viabilize o estudo de circuitos reais em sala de aula, tornando o aprendizado de eletrônica digital mais atrativo e prático.
-
-🚀 Funcionalidades e Aplicações
-O robô pode ser configurado para diferentes modos de operação através da lógica gravada no chip:
+O **B-DIRO** é um robô didático desenvolvido para facilitar o ensino de **Dispositivos Lógicos Programáveis (DLPs/PLDs)** e linguagens de descrição de hardware (HDL). O projeto visa substituir a dependência de simuladores por uma plataforma física de baixo custo, onde os alunos podem testar circuitos lógicos em tempo real.
 
 
-Seguidor de Linha: Utiliza sensores ópticos reflexivos para percorrer trajetos estabelecidos.
+
+## 🎯 Objetivo
+Proporcionar uma ferramenta prática para o estudo de eletrônica digital, álgebra booleana e sistemas embarcados, permitindo a transição do conhecimento teórico para a implementação em hardware reconfigurável.
+
+## 🛠️ Especificações de Hardware
+
+### Unidade Lógica
+* **Chip ATF16V8B-15PU**: Um dispositivo lógico programável (EEPLD) que armazena a lógica de controle do robô.
 
 
-Modo Atrativo/Repulsivo: Utiliza sensores de luz (LDR) para perseguir ou fugir de fontes de luminosidade.
+### Atuadores e Sensores
+* **Motores**: 2 Motores DC 6V com caixa de redução.
+* **Driver de Motor**: CI MX1616 ou MX1508 (Ponte H).
+* **Sensores de Linha**: Sensores óticos reflexivos infravermelhos (IR).
+* **Sensores de Luz**: Foto-resistores (LDR) para modos de busca de luminosidade.
+
+### Gravador de Hardware
+Para programar o chip, o projeto inclui um gravador baseado em:
+* **Arduino Nano**: Interface USB-Serial e controle de gravação.
+* **Módulo Boost (MT3608)**: Elevador de tensão para fornecer os 12V-14V necessários para a gravação da memória Flash do chip.
 
 
-Lógica Customizável: Graças ao uso de DLPs, o comportamento do robô pode ser inteiramente remodelado via programação, sem necessidade de alterar o circuito físico.
+## 💻 Software e Ferramentas
+* **WinCupl**: Compilador para a linguagem CUPL.
+* **Afterburner**: Software utilizado para carregar o ficheiro JEDEC (.jed) no chip através do Arduino.(https://github.com/ole00/afterburner/tree/version_4_legacy)
+* **Linguagens**: VHDL e CUPL.
 
-🛠️ Tecnologias e Componentes
-Hardware Principal
+## 🚀 Como Utilizar
 
-DLP ATF16V8B-15PU: Dispositivo lógico programável de alta performance que atua como o "cérebro" do robô.
-
-
-Arduino Nano: Utilizado como interface para a gravação dos comandos no chip DLP.
-
-
-Conversor DC/DC Step-Up (Boost): Responsável por elevar a tensão necessária para o processo de gravação do chip.
-
-Sensores:
-
-LDR (Foto-resistores) para detecção de luz.
-
-Sensores ópticos reflexivos (infravermelho) para detecção de linha.
+### 1. Criar a Lógica
+Desenvolva a lógica desejada (ex: Seguidor de Linha) no WinCupl. O comportamento é definido por equações booleanas ou tabelas de verdade.
 
 
-Atuadores: Motores DC 6V com caixa de redução e eixo duplo.
+### 2. Gravar o Chip
+Conecte o gravador ao computador e utilize o terminal (PowerShell/CMD) para enviar a lógica:
+```powershell
+# Verificar conexão e chip
+afterburner i -d COM3 -t GAL16V8
 
-Software e Linguagens
+# Gravar o arquivo de lógica
+afterburner wv -d COM3 -t GAL16V8 -f projeto.jed
 
-Linguagens: VHDL e CUPL (Cornel University Programming Language).
+```
 
+### 3. Testar no Robô
+Insira o chip programado no soquete do robô B-DIRO e ligue a alimentação. O robô executará a lógica gravada instantaneamente.
 
-WinCupl: Software para compilação do código e design do funcionamento do CPLD.
+👥 Equipe e Autores
 
+Este projeto é um Trabalho de Graduação realizado na Fatec Jundiaí – Deputado Ary Fossen:
 
-Afterburner: Código que permite a programação dos chips através do processador do Arduino.
+Alex Bertoloti do Carmo Grellet
 
+João Vitor Comoti Pires dos Santos
 
-Arduino IDE: Para carregar o firmware de gravação.
+Nicolas Kevin Fagundes Silva
 
-💻 Como Gravar o Circuito
-A gravação do comportamento no chip segue o fluxo:
-
-Desenvolver a lógica (Tabela Verdade) no WinCupl e gerar o arquivo .jed.
-
-Calibrar a tensão de gravação no circuito gravador utilizando o comando afterburner via PowerShell.
-
-Utilizar o comando afterburner wv para gravar e verificar o código no chip.
-
-👥 Autores
-Trabalho desenvolvido como requisito para o título de Tecnólogo em Sistemas Embarcados na Fatec Jundiaí – Deputado Ary Fossen:
-
-Alex Bertoloti do Carmo Grellet 
-
-João Vitor Comoti Pires dos Santos 
-
-Nicolas Kevin Fagundes Silva 
-
-Orientador: Prof. Me. Peter Jandl Jr. 
+Orientador: Prof. Me. Peter Jandl Jr.
 
 📄 Licença
-Este projeto foi desenvolvido para fins acadêmicos. (Sugestão: Adicione aqui uma licença como MIT ou CC BY-NC).
+
+Este projeto foi desenvolvido para fins acadêmicos e educativos.
