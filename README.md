@@ -50,7 +50,7 @@ afterburner wv -d COM3 -t GAL16V8 -f projeto.jed
 ### 3. Testar no Robô
 Insira o chip programado no soquete do robô B-DIRO e ligue a alimentação. O robô executará a lógica gravada instantaneamente.
 
-👥 Equipe e Autores
+## 👥 Equipe e Autores
 
 Este projeto é um Trabalho de Graduação realizado na Fatec Jundiaí – Deputado Ary Fossen:
 
@@ -62,6 +62,6 @@ Nicolas Kevin Fagundes Silva
 
 Orientador: Prof. Me. Peter Jandl Jr.
 
-📄 Licença
+## 📄 Licença
 
 Este projeto foi desenvolvido para fins acadêmicos e educativos.
