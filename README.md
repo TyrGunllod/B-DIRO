@@ -62,6 +62,8 @@ Nicolas Kevin Fagundes Silva
 
 Orientador: Prof. Me. Peter Jandl Jr.
 
+Vídeo da apresentação: https://www.youtube.com/watch?v=BYzqofE3wuI
+
 ## 📄 Licença
 
 Este projeto foi desenvolvido para fins acadêmicos e educativos.
