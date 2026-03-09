@@ -67,3 +67,7 @@ Vídeo da apresentação: https://www.youtube.com/watch?v=BYzqofE3wuI
 ## 📄 Licença
 
 Este projeto foi desenvolvido para fins acadêmicos e educativos.
+
+## Observação
+
+Eu perdi o hd que continham os arquivos dos layouts, vou ter que refazer e postar aqui.
